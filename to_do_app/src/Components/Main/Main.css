@@ -1,0 +1,62 @@
+/* navbar */
+.nav_container{
+    background-color: grey;
+    padding: 20px 100px;
+    display: flex;  
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99;
+    position: sticky;
+}
+
+.nav_menu{
+    margin-left: 200px;
+}
+.nav_menu a{
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.nav_menu a:hover{
+    text-decoration: underline;
+}
+.nav_container .btnPopup{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    transition: .5s;
+}
+.nav_container .btnPopup a{
+    text-decoration: none;
+}
+.nav_container .btnPopup:hover{
+    background: #fff;
+    color: #162938;
+}
+.user_icon{
+    font-size: 35px;
+    color: white;
+    cursor: pointer;
+}
+
+.user_icon:hover{
+    color: #162938;
+}
+
+.nav_container .btnbox{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
