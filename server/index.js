@@ -60,27 +60,25 @@ app.post('/delete', asyncHandler(async(req,res) =>{
 }))
 app.post('/updatedone', asyncHandler(async(req,res) =>{
     const{email, index} = req.body;
-   const works = await UserModel.findOneAndUpdate({email:email}, {tasks})
+    const getUsertoChange = await UserModel.findOne({email: email});
+    update = getUsertoChange.tasks;
+    update[index].done = true;
+    console.log(update);
+    const works = await UserModel.findOneAndUpdate({email:email}, {tasks: update})
     .then(result => res.json(result))
     .catch(err => res.json(err))
 }))
-app.put('/updatedone/:id', (req, res) =>{
-    const {id} = req.params;
-    TodoModel.findByIdAndUpdate({_id: id}, {done: true})
-    .then(result => {
-        if(result){
-            res.status.apply(200).json(result);
-        }
-        
-    })
-    .catch(err => res.json(err))
-})
-app.put('/update/:id', (req, res) =>{
-    const {id} = req.params;
-    TodoModel.findByIdAndUpdate({_id: id}, {done: false})
+
+app.post('/update', asyncHandler(async(req,res) =>{
+    const{email, index} = req.body;
+    const getUsertoChange = await UserModel.findOne({email: email});
+    update = getUsertoChange.tasks;
+    update[index].done = false;
+    console.log(update);
+    const works = await UserModel.findOneAndUpdate({email:email}, {tasks: update})
     .then(result => res.json(result))
     .catch(err => res.json(err))
-})
+}))
 app.post('/get', (req,res) =>{
     const {email} = req.body;
     UserModel.findOne({email: email})

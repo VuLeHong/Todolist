@@ -18,15 +18,15 @@ function Home() {
         .catch(err => console.log(err))
     }, [])
     //insomia nhận đc result nma home lại ko nhận đc json
-    const handleEditdone = (id) => {
-        axios.post('http://localhost:3000/updatedone',{email: auth.email, id})
+    const handleEditdone = (index) => {
+        axios.post('http://localhost:3000/updatedone',{email: auth.email, index})
         .then(result => {
             location.reload()
         })
         .catch(err => console.log(err))
     }
-    const handleEdit = (id) => {
-        axios.post('http://localhost:3000/update',{email: auth.email, id})
+    const handleEdit = (index) => {
+        axios.post('http://localhost:3000/update',{email: auth.email, index})
         .then(result => {
             location.reload()
         })
@@ -58,7 +58,7 @@ function Home() {
                         :
                         <MdCheckBoxOutlineBlank className='icon' onClick={() => handleEditdone(index)}/>}
                         
-                        <p className={todo.done ? "line_through" : ""}>{todo.task_name}<span>{index}</span></p>
+                        <p className={todo.done ? "line_through" : ""}>{todo.task_name}</p>
                     </div>
                     <div>
                         <span><MdDelete className='icon' onClick={() => handleDelete(todo._id)}/></span>
