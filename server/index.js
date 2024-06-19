@@ -53,7 +53,7 @@ app.post('/login', (req,res) =>{
 //home
 app.post('/delete', asyncHandler(async(req,res) =>{
     const{email, id} = req.body;
-    const task = {_id: id, done:false}
+    const task = {_id: id}
    const works = await UserModel.findOneAndUpdate({email:email}, {$pull: {tasks:task}})
     .then(result => res.json(result))
     .catch(err => res.json(err))
@@ -63,7 +63,7 @@ app.post('/updatedone', asyncHandler(async(req,res) =>{
     const getUsertoChange = await UserModel.findOne({email: email});
     update = getUsertoChange.tasks;
     update[index].done = true;
-    console.log(update);
+    //console.log(update);
     const works = await UserModel.findOneAndUpdate({email:email}, {tasks: update})
     .then(result => res.json(result))
     .catch(err => res.json(err))
@@ -74,7 +74,7 @@ app.post('/update', asyncHandler(async(req,res) =>{
     const getUsertoChange = await UserModel.findOne({email: email});
     update = getUsertoChange.tasks;
     update[index].done = false;
-    console.log(update);
+    //console.log(update);
     const works = await UserModel.findOneAndUpdate({email:email}, {tasks: update})
     .then(result => res.json(result))
     .catch(err => res.json(err))

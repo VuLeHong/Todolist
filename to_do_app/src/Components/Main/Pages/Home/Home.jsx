@@ -13,7 +13,7 @@ function Home() {
         axios.post('http://localhost:3000/get', {email: auth.email}) 
         .then(result => {
                 setTodos(result.data.tasks)
-                //console.log(result.data)
+                console.log(result.data.tasks)
         })
         .catch(err => console.log(err))
     }, [])
